@@ -2,6 +2,16 @@
     RewriteEngine On
         # Allow PATH_INFO to be passed to PHP scripts
         AcceptPathInfo On
+    # Ensure Apache will look for index.php first
+    <IfModule mod_dir.c>
+        DirectoryIndex index.php index.html
+    </IfModule>
+
+    # Allow access when served from the site root
+    <IfModule mod_authz_core.c>
+        Require all granted
+    </IfModule>
+
     # Use the base path from your config (adjust if your project is in a different folder)
     # When deployed at the site root, use `/`. Adjust if the app is hosted in a subpath.
     RewriteBase /

@@ -6,3 +6,10 @@ services:
     root: userpanel-frontend
     buildCommand: npm ci && npm run build
     publish: dist
+  - type: web
+    name: automated-scheduling-backend
+    env: php
+    branch: main
+    root: userpanel-backend
+    buildCommand: composer install --no-interaction --no-dev --prefer-dist || true
+    startCommand: apache2ctl -D FOREGROUND

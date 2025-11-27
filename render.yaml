@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: userpanel-backend
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    root: userpanel-backend
+    autoDeploy: true
+    healthCheckPath: /
+
+  - type: static
+    name: userpanel-frontend
+    env: static
+    plan: free
+    root: userpanel-frontend
+    buildCommand: npm install && npm run build
+    publishPath: userpanel-frontend/dist
+    autoDeploy: true

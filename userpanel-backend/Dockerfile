@@ -12,8 +12,10 @@ RUN a2enmod rewrite
 # Set working directory to the backend app folder
 WORKDIR /var/www/html
 
-# Copy only the backend folder to the container
-COPY ./userpanel-backend/ /var/www/html/
+# Copy the current build context (the backend folder) into the container
+# Use `COPY . /var/www/html/` because Render builds this Dockerfile with
+# the service `root` set to the `userpanel-backend` directory.
+COPY . /var/www/html/
 
 # Fix permissions
 RUN chown -R www-data:www-data /var/www/html \

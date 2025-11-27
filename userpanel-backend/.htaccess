@@ -3,7 +3,8 @@
         # Allow PATH_INFO to be passed to PHP scripts
         AcceptPathInfo On
     # Use the base path from your config (adjust if your project is in a different folder)
-    RewriteBase /userpanel-event/userpanel-backend/
+    # When deployed at the site root, use `/`. Adjust if the app is hosted in a subpath.
+    RewriteBase /
 
     # Prevent direct access to certain directories
     RewriteRule ^(app|scheme|vendor|runtime)($|/) - [L,NC]

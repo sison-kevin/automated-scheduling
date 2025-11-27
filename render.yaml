@@ -3,7 +3,7 @@ services:
     name: userpanel-backend
     env: docker
     plan: free
-    dockerfilePath: ./Dockerfile
+    dockerfilePath: ./userpanel-backend/Dockerfile
     root: userpanel-backend
     autoDeploy: true
     healthCheckPath: /
